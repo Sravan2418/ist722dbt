@@ -3,3 +3,8 @@ version: 2
 models:
   - name: obt_order_fulfillment
     description: The order fulfillment fact table combined with all of its outrigger dimensions into one bit table. Transaction fact table with one row per order does not include product.
+
+
+
+    d_title as (select * from {{ ref("dim_title") }}),
+    left join d_title t on f.titlekey = t.titlekey
